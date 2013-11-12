@@ -1,0 +1,122 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>first-pipeline</groupId>
+	<artifactId>streamer-java</artifactId>
+	<version>0.0.3-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>streamer-java</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- Logging dependencies -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.9</version>
+			<exclusions>
+				<!-- <exclusion> -->
+				<!-- <groupId>commons-collections</groupId> -->
+				<!-- <artifactId>commons-collections</artifactId> -->
+				<!-- </exclusion> -->
+
+				<exclusion>
+					<groupId>commons-digester</groupId>
+					<artifactId>commons-digester</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>commons-beanutils</groupId>
+					<artifactId>commons-beanutils-core</artifactId>
+				</exclusion>
+
+			</exclusions>
+		</dependency>
+
+		<!-- This dependency is unlikely to be found in any maven repo. The command 
+			for manually adding it to the local repo: -->
+		<!-- <dependency> <groupId>org.zeromq</groupId> <artifactId>jzmq</artifactId> 
+			<version>2.1</version> <scope>system</scope> <systemPath>${project.basedir}/lib/zmq.jar</systemPath> 
+			</dependency> -->
+		<!-- <dependency> <groupId>backtype</groupId> <artifactId>jzmq</artifactId> 
+			<version>2.1.0</version> </dependency> -->
+
+		<dependency>
+			<groupId>org.jeromq</groupId>
+			<artifactId>jeromq</artifactId>
+			<version>0.3.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.apache.activemq</groupId> <artifactId>activemq-core</artifactId> 
+			<version>5.6.0</version> </dependency> -->
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<snapshots />
+			<id>snapshots</id>
+			<name>internal-snapshots</name>
+			<url>http://repo.typesafe.com/typesafe/internal-snapshots</url>
+		</repository>
+	</repositories>
+</project>

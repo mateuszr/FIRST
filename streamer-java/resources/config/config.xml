@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<messenger-definition>
+	<messaging>
+	<ID>1</ID>
+	<ReceiverNumber>1</ReceiverNumber>
+	<ProducerNumber>1</ProducerNumber>
+		<connection>
+			<MessageReceiveAddress>tcp://127.0.0.1:5555</MessageReceiveAddress>
+			<SendLoadBalancingAddress>tcp://127.0.0.1:5556</SendLoadBalancingAddress>
+			<FinishReceive>tcp://127.0.0.1:5550</FinishReceive>
+<!--  			<MessageSendAddress>tcp://127.0.0.1:5555</MessageSendAddress>  -->
+<!--  			<ReceiveLoadBalancingAddress>tcp://127.0.0.1:5556</ReceiveLoadBalancingAddress> -->
+<!-- <FinishPublish>tcp://127.0.0.1:5550</FinishPublish> -->
+			<RECEIVE_COMMAND_FILTER></RECEIVE_COMMAND_FILTER>
+			<ACTIVEMQ>tcp://127.0.0.1:61616</ACTIVEMQ>
+			<QueueName>WP3_QUEUE</QueueName>
+		</connection>
+		<logging>
+			<DBLogging>false</DBLogging>
+			<DBLoggingReceiver>tcp://*:5561</DBLoggingReceiver>
+			<DBLoggingLocalWrite>false</DBLoggingLocalWrite>
+		</logging>		
+		<MessagingType>0</MessagingType>
+		<BLOCK_ON_SEND>1</BLOCK_ON_SEND>
+		<Broker>0</Broker>
+		<MAX_QUEUE_SIZE>10</MAX_QUEUE_SIZE>
+		<MIN_QUEUE_SIZE>1</MIN_QUEUE_SIZE>
+		<BLOCKING_QUEUE>TRUE</BLOCKING_QUEUE>
+		<IGNORE_QUEUE_OVERFLOW>FALSE</IGNORE_QUEUE_OVERFLOW>
+		<MESSAGE_REQUEST>R</MESSAGE_REQUEST>
+		<WAIT_COMMAND>WAIT</WAIT_COMMAND>
+		<FINISH_COMMAND>FINISH</FINISH_COMMAND>
+		<CONTINUE_COMMAND>CONTINUE</CONTINUE_COMMAND>
+		<outFileStorageAddress>outMessageStorage</outFileStorageAddress>
+		<inFileStorageAddress>inMessageStorage</inFileStorageAddress>
+		<MAX_FILE_STORAGE_SIZE>1000</MAX_FILE_STORAGE_SIZE>
+	</messaging>
+</messenger-definition>
